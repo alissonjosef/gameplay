@@ -5,6 +5,7 @@ import { ButtonAdd } from "../../components/ButtonAdd"
 import { CategorySelect } from "../../components/CategorySelect"
 import { ListDivider } from "../../components/ListDivider"
 import { ListHeader } from "../../components/ListHeader"
+import { Background } from '../../components/Background';
 import { Profile } from "../../components/Profile"
 import { styles } from "../SignIn/styles"
 import { style } from "./styles"
@@ -15,6 +16,18 @@ export function Home() {
     const appointments = [
         {
             id: '1',
+            guild: {
+                id: '1',
+                name: 'Lendarios',
+                icon: null,
+                owner: true
+            },
+            category: '1',
+            date: '22/06 as 20:40',
+            description: 'E hoje que vamos chegar ao challenger sem perder uma partida da md10'
+        },
+        {
+            id: '2',
             guild: {
                 id: '1',
                 name: 'Lendarios',
@@ -46,19 +59,19 @@ export function Home() {
                 <ListHeader
                     title="Partidas agendas"
                     subtitle="Total 6" />
+
+                <FlatList
+                    data={appointments}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <Appointment data={item} />
+                    )}
+                    ItemSeparatorComponent={() => <ListDivider />}
+                    style={style.matches}
+                    showsVerticalScrollIndicator={false}
+
+                />
             </View>
-
-            <FlatList
-                data={appointments}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <Appointment data={item} />
-                )}
-                ItemSeparatorComponent={() => <ListDivider />}
-                style={style.matches}
-                showsVerticalScrollIndicator={false}
-
-            />
         </View>
     )
 }

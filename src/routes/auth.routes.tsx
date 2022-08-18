@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Home } from "../screens/home";
 import { SignIn } from "../screens/SignIn";
+import { theme } from "../global/styles/theme";
 
 
 const Stack = createNativeStackNavigator()
@@ -13,7 +14,7 @@ export function AuthRoutes() {
             screenOptions={{
                 headerShown: false,
                 contentStyle: {
-                    backgroundColor: 'transparent'
+                    backgroundColor: theme.colors.secondary100
                 }
             }}
 
